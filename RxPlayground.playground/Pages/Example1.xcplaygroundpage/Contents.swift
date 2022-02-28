@@ -132,6 +132,7 @@ example(of: "DisposeBag") {
 		 observer.onError(MyError.anError)
 		 observer.onCompleted()
 		 observer.onNext("?")
+		 // Disposables은 구조체, create는  Disposable을 리턴
 		 return Disposables.create()
 	 })
 		 .subscribe(

@@ -5,7 +5,7 @@ import RxCocoa
 
 // XXRelay
 // 오직 next 이벤트만 emit한다.
-// (이벤트가?) 절대로 끝나지 않음을 보장
+// 이벤트가 무조건 끝나지 않음을 보장
 
 // PublishSubject를 Wrapping한 클래스, error, onCompleted 못씀
 example(of: "PublishRelay") {
