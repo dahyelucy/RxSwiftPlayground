@@ -35,6 +35,26 @@ example(of: "PublishSubject") {
     
     subscriber2.dispose()
     
+    enum GameError: Error {
+        case deadHand
+    }
+    
+    
+    let dealer = PublishSubject<Int>()
+    
+    var sum = 0
+    
+    let gamer1 = dealer.subscribe(onNext: { num in
+        
+        sum += num
+        if sum > 21 {
+            print("go Error")
+        } else {
+            print("go Next")
+        }
+    })
+    
+    
 }
 
 // publisher가 발행을 종료해도 구독 즉시 publisher의 최신값을 조회.. 신기하구만
@@ -45,7 +65,8 @@ example(of: "BehaviorSubject") {
 	let publisher = BehaviorSubject(value: "Initial Value")
 	let disposeBag = DisposeBag()
 	
-	publisher.onNext("X")
+    // next가 없으면 초기값 찍고 시작
+//	publisher.onNext("X")
 	
 	let _ = publisher.subscribe {
 		print(" [1] :", $0)
@@ -94,6 +115,7 @@ example(of: "ReplaySubject") {
 	}.disposed(by: disposeBag)
 	
 }
+
 
 public enum CardError:Error {
 	case cardError
